@@ -3,30 +3,31 @@ import { createContext, useContext, useState } from "react";
 export const ThemeContext = createContext();
 
 const ThemeContextProvider = ({ children }) => {
-  const [username, setUsername] = useState("khalteck");
-
   const [isLightTheme, setIsLightTheme] = useState(true);
-  const [lightTheme, setLightTheme] = useState({
+  const [light, setLight] = useState({
     syntax: "#555",
     ui: "#ddd",
     bg: "#eee",
   });
-  const [darkTheme, setDarkTheme] = useState({
+  const [dark, setDark] = useState({
     syntax: "#ddd",
     ui: "#333",
     bg: "#555",
   });
 
+  function handleTheme() {
+    setIsLightTheme((prev) => !prev);
+  }
   return (
     <ThemeContext.Provider
       value={{
-        username,
+        handleTheme,
         isLightTheme,
         setIsLightTheme,
-        lightTheme,
-        setLightTheme,
-        darkTheme,
-        setDarkTheme,
+        light,
+        setLight,
+        dark,
+        setDark,
       }}
     >
       {children}

@@ -1,9 +1,10 @@
-// import { ThemeContext, useGlobalContext } from "../contexts/ThemeContext";
+import { useGlobalContext } from "../contexts/ThemeContext";
 
 const Navbar = () => {
-  //   const { username } = useGlobalContext();
+  const { isLightTheme, light, dark } = useGlobalContext();
+  const theme = isLightTheme ? light : dark;
   return (
-    <nav>
+    <nav style={{ background: theme.ui, color: theme.syntax }}>
       <h1>Context app</h1>
       <ul>
         <li>Home</li>
